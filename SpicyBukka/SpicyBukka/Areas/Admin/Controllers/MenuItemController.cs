@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpicyBukka.Data;
@@ -6,6 +7,7 @@ using SpicyBukka.Models;
 using SpicyBukka.Models.ViewModels;
 using SpicyBukka.Utility;
 using System;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Threading.Tasks;
 namespace SpicyBukka.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticDetail.ManagerUser)]
     public class MenuItemController : Controller
     {
         private readonly ApplicationDbContext _db;
