@@ -8,9 +8,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SpicyBukka</title>
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+   
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" />
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body class="search-background">
@@ -47,10 +51,10 @@
                             </li>
                         }
 
-                        @if(HttpContextAccessor.HttpContext.Session.GetInt32("StaticDetail.ssShoppigCartCount") != null)
+                        @if(HttpContextAccessor.HttpContext.Session.GetInt32(StaticDetail.ssShoppingCartCount) != null)
                         {
                             <li style="color:white">
-                                <a href="#" class="nav-link">
+                                <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link">
                                     @{
                                         var count = HttpContextAccessor.HttpContext.Session.GetInt32(StaticDetail.ssShoppingCartCount);
                                     }
@@ -61,7 +65,7 @@
                         else
                         {
                             <li style="color:white">
-                                <a href="#" class="nav-link">
+                                <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link">
                                     <i class="fas fa-shopping-cart"></i> &nbsp; (0)
                                 </a>
                             </li>
@@ -90,11 +94,14 @@
         </div>
     </footer>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp"></script>
-   
-    <script src="~/js/jquery-ui.js"></script>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+  
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+  
     @RenderSection("Scripts", required: false)
 </body>
 </html>

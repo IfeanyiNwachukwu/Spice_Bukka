@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SpicyBukka.Data;
 using SpicyBukka.Services;
+using SpicyBukka.Utility;
+using Stripe;
 using System;
 
 namespace SpicyBukka
@@ -29,6 +31,8 @@ namespace SpicyBukka
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddControllersWithViews();
@@ -61,6 +65,8 @@ namespace SpicyBukka
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
+
+            StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
 
             app.UseAuthentication();
             app.UseAuthorization();
