@@ -38,6 +38,12 @@ namespace SpicyBukka
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = "1261949028089913";
+                facebookOptions.AppSecret = "4d515ed9118070f182183896a871bc7a";
+
+            });
             services.AddSession(options =>
             {
                 options.Cookie.IsEssential = true;
