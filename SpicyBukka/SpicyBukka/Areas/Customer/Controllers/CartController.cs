@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpicyBukka.Data;
@@ -281,8 +282,7 @@ namespace SpicyBukka.Areas.Customer.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-     
+        
 
 
     }
