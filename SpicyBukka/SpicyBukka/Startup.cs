@@ -40,8 +40,8 @@ namespace SpicyBukka
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = "1261949028089913";
-                facebookOptions.AppSecret = "4d515ed9118070f182183896a871bc7a";
+                facebookOptions.AppId = "12619490";
+                facebookOptions.AppSecret = "4d515ed911807";
 
             });
             services.AddSession(options =>
